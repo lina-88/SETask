@@ -1,0 +1,83 @@
+<h1>Student Courses Section</h1>
+
+<div class="container">
+  <div class=row>
+    <div class="col-6">
+
+<button class="btn btn-primary" (click)="getStudentCoursesdb()">View Courses of Each Studend</button>
+
+
+
+<!-- <div *ngFor="let studentcoursedb of studentcoursesfromdb">{{studentcoursedb|json}}</div> -->
+
+
+
+<table class="table" *ngIf="StudentCoursesButton==true" >
+    <thead>
+        <tr>
+            
+            <th  scope="col">Student  id</th>
+            <th  scope="col">Course id</th>
+            
+          
+        </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let studentcoursedb of studentcoursesfromdb">
+      
+        
+         <td >{{studentcoursedb.courseId}}</td>
+         <td >{{studentcoursedb.studentId}}</td>
+        
+         
+     </tr>
+    </tbody>
+</table> 
+
+</div>
+
+<div class=col-6>
+
+<button  class="btn btn-primary" (click)="inputStudentCourseData()">Add Subsicription </button>
+<div class="container">
+  <div class=row>
+    <div class="col-6">
+       <form (ngSubmit)="onSubmit()" #f="ngForm" *ngIf="poststudentcoursebutton==true">
+    
+        
+        
+        <div class="mb-3">
+              <label for="courseid" class="form-label">CourseId</label>
+              <input type="number"
+               class="form-control" 
+               id="courseid"
+               ngModel
+               name="courseid"
+               required
+               #courseid="ngModel">
+               <span class="error-message" *ngIf="!courseid.valid && courseid.touched">  course id is required</span>
+            
+            </div>
+            <div class="mb-3">
+             <label for="studentid" class="form-label">StudentId</label>
+             <input type="number"
+              class="form-control" 
+              id="studentid"
+              ngModel
+              name="studentid"
+              required
+              #studentid="ngModel">
+              <span class="error-message" *ngIf="!studentid.valid && studentid.touched"> student id required</span>
+            </div>
+           
+          
+           
+    <button type="submit" class="btn btn-primary " [disabled]="!f.valid">Submit</button>
+    <button type="button" class="btn btn-danger " (click)="resetForm()" >Reset</button>
+
+     </form>
+     <div>{{stcomessage}}</div>
+   </div>
+  </div>
+</div>
+

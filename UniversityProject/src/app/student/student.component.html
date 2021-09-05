@@ -1,0 +1,70 @@
+<h1>Students Section</h1>
+
+
+<div class="container">
+  <div class=row>
+    <div class="col-6">
+<button  class="btn btn-primary" (click)="getStudentsdb()">Get All Students</button>
+
+<table class="table" *ngIf="StudentsButton==true">
+    <thead>
+        <tr>
+            
+            <th  scope="col">Student name</th>
+            <th  scope="col">Student gpa</th>
+        </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let studentdb of studentsfromdb">
+      
+         
+         <td >{{studentdb.name}}</td>
+         <td >{{studentdb.gpa}}</td>
+     </tr>
+    </tbody>
+</table> 
+
+</div>
+
+    <div class="col-6">
+
+<button  class="btn btn-primary" (click)="inputStudentData()">post a student to db </button>
+<div class="container">
+  <div class=row>
+    <div class="col-6">
+       <form (ngSubmit)="onSubmit()" #f="ngForm" *ngIf="poststudentbutton==true">
+    
+          
+            <div class="mb-3">
+             <label for="studentname" class="form-label">Name</label>
+             <input type="text"
+              class="form-control" 
+              id="studentname"
+              ngModel
+              name="name"
+              required
+              #name="ngModel">
+              <span class="error-message" *ngIf="!name.valid && name.touched"> name required</span>
+            </div>
+           <div class="mb-3   ">
+             <label class="form-label" for="studentgpa">Gpa</label>
+             <input type="text" 
+             class="form-control" 
+             id="studentgpa"
+             ngModel
+             name="gpa"
+             required
+             #gpa="ngModel">
+             <span class="error-message" *ngIf="!gpa.valid && gpa.touched">gpa required</span>
+          
+           </div>
+    <button type="submit" class="btn btn-primary " [disabled]="!f.valid">Submit</button>
+    <button type="button" class="btn btn-danger " (click)="resetForm()" >Reset</button>
+
+     </form>
+     <div>{{studentmessage}}</div>
+   </div>
+  </div>
+</div>
+
+

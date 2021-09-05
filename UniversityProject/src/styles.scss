@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red
+}
+.error-message{
+    color:red;
+}
+
+button{
+    // margin:0 0.2rem;
+    margin:10px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+h1{
+    text-align: center;
+}
